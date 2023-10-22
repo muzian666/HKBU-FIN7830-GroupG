@@ -59,7 +59,6 @@ X_resampled, y_resampled = manual_SMOTE(X, y, target_label, random_state=42)
 
 # Check the distribution of the target variable after SMOTE
 y_resampled.value_counts()
-
 ```
 
 
@@ -86,4 +85,42 @@ model = Sequential([
     Dense(16, activation='relu'),
     Dense(1, activation='sigmoid')
 ])
+```
+## 考虑加入L1/L2正则化
+```python
+from tensorflow.keras import regularizers
+Dense(64, activation='relu', kernel_regularizer=regularizers.l1(0.01))
+```
+## 加入DropOut层
+```python
+from tensorflow.keras.layers import Dropout
+model.add(Dropout(0.5))
+```
+
+## 可视化神经元
+```python
+import matplotlib.pyplot as plt
+
+history = model.fit(X_train, y_train, epochs=20, batch_size=32, validation_split=0.2)
+
+# Plot training & validation accuracy values
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Model accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Test'], loc='upper left')
+plt.show()
+```
+## 使用Adam优化器
+```python
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+```
+
+## 获得模型所有层权重
+```python
+for i, layer in enumerate(model.layers):
+    weights = layer.get_weights()[0]
+    biases = layer.get_weights()[1]
+    print(f"Layer {i} - Weights:\n{weights}, Biases:\n{biases}")
 ```
