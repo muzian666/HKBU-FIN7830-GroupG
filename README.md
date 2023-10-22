@@ -142,6 +142,28 @@ Dense(64, activation='relu', kernel_regularizer=regularizers.l1(0.01))
 from tensorflow.keras.layers import Dropout
 model.add(Dropout(0.5))
 ```
+## 加入正则化和Dropout后的模型结构
+```python
+model = Sequential([
+    # 第一层: 输入层，不需要正则化或 Dropout
+    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
+    
+    # 第二层: 隐藏层，添加 L1/L2 正则化
+    Dense(64, activation='relu', kernel_regularizer=regularizers.l1_l2(l1=0.01, l2=0.01)),
+    
+    # 添加 Dropout 层
+    Dropout(0.5),
+    
+    # 第三层: 隐藏层，添加 L2 正则化
+    Dense(32, activation='relu', kernel_regularizer=regularizers.l2(0.01)),
+    
+    # 添加 Dropout 层
+    Dropout(0.5),
+    
+    # 输出层: 通常不需要正则化或 Dropout
+    Dense(1, activation='sigmoid')
+])
+```
 
 ## 可视化神经元
 ```python
