@@ -1,4 +1,9 @@
 # HKBU-FIN7830-GP
+## Dataset Citation
+```
+Karanth, M. (2020). Tabular summary of HR analytics dataset. [Data set]. Zenodo. https://doi.org/10.5281/zenodo.4088439
+```
+## Dataset Load
 ```python
 # 读取数据集
 import pandas as pd
