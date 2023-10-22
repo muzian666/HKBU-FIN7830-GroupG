@@ -61,6 +61,8 @@ X_resampled, y_resampled = manual_SMOTE(X, y, target_label, random_state=42)
 y_resampled.value_counts()
 ```
 
+# 逻辑回归
+祝一切安好
 
 # 神经网络
 使用Tensorflow构建神经网络
