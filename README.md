@@ -5,7 +5,7 @@ Karanth, M. (2020). Tabular summary of HR analytics dataset. [Data set]. Zenodo.
 ```
 ## Dataset Load
 ```python
-# 读取数据集
+# Read Dataset
 import pandas as pd
 
 # Load the dataset
