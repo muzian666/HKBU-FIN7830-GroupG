@@ -2,8 +2,10 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras import regularizers
+from tensorflow.keras.layers import LeakyReLU
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.callbacks import EarlyStopping
 import pandas as pd
 
 from tensorflow.keras.callbacks import TensorBoard
@@ -23,11 +25,31 @@ X_test_scaled = scaler.transform(X_test)
 
 # 创建模型
 model = Sequential([
-    Dense(64, activation='relu', input_shape=(X_train_scaled.shape[1],)),
-    Dense(64, activation='relu', kernel_regularizer=regularizers.l1_l2(l1=0.01, l2=0.01)),
-    Dropout(0.5),
-    Dense(32, activation='relu', kernel_regularizer=regularizers.l2(0.01)),
-    Dropout(0.5),
+    # 输入层
+    Dense(256, input_shape=(X_train_scaled.shape[1],)),
+    LeakyReLU(alpha=0.3),
+    Dropout(0.2),
+
+    # 隐藏层1
+    Dense(128, kernel_regularizer=regularizers.l1_l2(l1=0.005, l2=0.005)),
+    LeakyReLU(alpha=0.3),
+    Dropout(0.4),
+
+    # 隐藏层2
+    Dense(64, kernel_regularizer=regularizers.l2(0.005)),
+    LeakyReLU(alpha=0.3),
+    Dropout(0.4),
+
+    # 隐藏层3
+    Dense(32),
+    LeakyReLU(alpha=0.3),
+    Dropout(0.2),
+
+    # 隐藏层4
+    Dense(16),
+    LeakyReLU(alpha=0.3),
+
+    # 输出层
     Dense(1, activation='sigmoid')
 ])
 
@@ -36,8 +58,10 @@ model.compile(optimizer='adam',
               loss='binary_crossentropy',
               metrics=['accuracy'])
 
+early_stopping = EarlyStopping(monitor='val_accuracy', min_delta=0, patience=10, verbose=1, mode='auto', baseline=0.9, restore_best_weights=True)
+
 # 训练模型
-model.fit(X_train_scaled, y_train, epochs=1000, batch_size=32, validation_split=0.2, callbacks=[tensorboard_callback])
+model.fit(X_train_scaled, y_train, epochs=1000, batch_size=32, validation_split=0.2, callbacks=[tensorboard_callback, early_stopping])
 
 # 评估模型
 loss, accuracy = model.evaluate(X_test_scaled, y_test)
