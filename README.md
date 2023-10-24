@@ -106,6 +106,10 @@ X_resampled, y_resampled = manual_SMOTE(X, y, target_label, random_state=42)
 y_resampled.value_counts()
 ```
 
+# 数据可视化结果
+## 原数据数值型变量可视化
+![avatar](Resources/IMG/RawDataBasic1.png)
+
 # 逻辑回归
 Wait for Write
 
