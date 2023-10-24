@@ -31,14 +31,11 @@ model = Sequential([
     Dropout(0.2),
 
     # 隐藏层1
-    Dense(16, kernel_regularizer=regularizers.l1_l2(l1=0.005, l2=0.005)),  # 增加正则化
+    Dense(16, kernel_regularizer=regularizers.l1_l2(l1=0.001, l2=0.001)),  # 增加正则化
     LeakyReLU(alpha=0.3),
     Dropout(0.4),  # 调整Dropout比率
 
     # 隐藏层2（删除，以减少模型复杂性）
-    Dense(16, kernel_regularizer=regularizers.l1_l2(l1=0.005, l2=0.005)),  # 增加正则化
-    LeakyReLU(alpha=0.3),
-    Dropout(0.4),  # 调整Dropout比率
 
     # 输出层
     Dense(1, activation='sigmoid')
