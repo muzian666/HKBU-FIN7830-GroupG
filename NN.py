@@ -36,6 +36,9 @@ model = Sequential([
     Dropout(0.4),  # 调整Dropout比率
 
     # 隐藏层2（删除，以减少模型复杂性）
+    Dense(16, kernel_regularizer=regularizers.l1_l2(l1=0.005, l2=0.005)),  # 增加正则化
+    LeakyReLU(alpha=0.3),
+    Dropout(0.4),  # 调整Dropout比率
 
     # 输出层
     Dense(1, activation='sigmoid')
@@ -46,10 +49,10 @@ model.compile(optimizer='adam',
               loss='binary_crossentropy',
               metrics=['accuracy'])
 
-early_stopping = EarlyStopping(monitor='val_accuracy', min_delta=0, patience=1000, verbose=1, mode='auto', baseline=0.95, restore_best_weights=True)
+early_stopping = EarlyStopping(monitor='val_accuracy', min_delta=0, patience=2000, verbose=1, mode='auto', baseline=0.95, restore_best_weights=True)
 
 # 训练模型
-model.fit(X_train_scaled, y_train, epochs=1000, batch_size=32, validation_split=0.2, callbacks=[tensorboard_callback, early_stopping])
+model.fit(X_train_scaled, y_train, epochs=2000, batch_size=32, validation_split=0.2, callbacks=[tensorboard_callback, early_stopping])
 
 # 评估模型
 loss, accuracy = model.evaluate(X_test_scaled, y_test)
