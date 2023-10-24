@@ -107,8 +107,22 @@ y_resampled.value_counts()
 ```
 
 # 数据可视化结果
-## 原数据数值型变量可视化
+## 原数据-数值型变量可视化
 ![avatar](Resources/IMG/RawDataBasic1.png)
+## 原数据-分类型变量可视化
+![avatar](Resources/IMG/RawDataBasic2.png)
+## 原数据-数值型变量与Attrition的关系
+![avatar](Resources/IMG/RawDataRelation1.png)
+## 原数据-分类型变量与Attrition的关系
+![avatar](Resources/IMG/RawDataRelation2.png)
+## 平衡后数据-数值型变量可视化
+![avatar](Resources/IMG/BalanceDataBasic1.png)
+## 平衡后数据-分类型变量可视化
+![avatar](Resources/IMG/BalanceDataBasic2.png)
+## 平衡后数据-数值型变量与Attrition的关系
+![avatar](Resources/IMG/BalanceDataRelation1.png)
+## 平衡后数据-分类型变量与Attrition的关系
+![avatar](Resources/IMG/BalanceDataRelation2.png)
 
 # 逻辑回归
 Wait for Write
