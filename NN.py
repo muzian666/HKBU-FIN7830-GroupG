@@ -26,28 +26,16 @@ X_test_scaled = scaler.transform(X_test)
 # 创建模型
 model = Sequential([
     # 输入层
-    Dense(256, input_shape=(X_train_scaled.shape[1],)),
+    Dense(32, input_shape=(X_train_scaled.shape[1],)),  # 减少神经元数量
     LeakyReLU(alpha=0.3),
     Dropout(0.2),
 
     # 隐藏层1
-    Dense(128, kernel_regularizer=regularizers.l1_l2(l1=0.005, l2=0.005)),
+    Dense(16, kernel_regularizer=regularizers.l1_l2(l1=0.005, l2=0.005)),  # 增加正则化
     LeakyReLU(alpha=0.3),
-    Dropout(0.4),
+    Dropout(0.4),  # 调整Dropout比率
 
-    # 隐藏层2
-    Dense(64, kernel_regularizer=regularizers.l2(0.005)),
-    LeakyReLU(alpha=0.3),
-    Dropout(0.4),
-
-    # 隐藏层3
-    Dense(32),
-    LeakyReLU(alpha=0.3),
-    Dropout(0.2),
-
-    # 隐藏层4
-    Dense(16),
-    LeakyReLU(alpha=0.3),
+    # 隐藏层2（删除，以减少模型复杂性）
 
     # 输出层
     Dense(1, activation='sigmoid')
@@ -58,7 +46,7 @@ model.compile(optimizer='adam',
               loss='binary_crossentropy',
               metrics=['accuracy'])
 
-early_stopping = EarlyStopping(monitor='val_accuracy', min_delta=0, patience=10, verbose=1, mode='auto', baseline=0.9, restore_best_weights=True)
+early_stopping = EarlyStopping(monitor='val_accuracy', min_delta=0, patience=1000, verbose=1, mode='auto', baseline=0.95, restore_best_weights=True)
 
 # 训练模型
 model.fit(X_train_scaled, y_train, epochs=1000, batch_size=32, validation_split=0.2, callbacks=[tensorboard_callback, early_stopping])
