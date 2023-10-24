@@ -4,7 +4,7 @@ import pandas as pd
 import json
 
 # 读取数据
-df = pd.read_csv('Resources/HR_Analytics.csv.csv')
+df = pd.read_csv('Resources/Data/HR_Analytics.csv.csv')
 
 le_dict = {}
 

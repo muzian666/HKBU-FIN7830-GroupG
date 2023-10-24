@@ -3,7 +3,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.preprocessing import LabelEncoder
 
 # Load the dataset
-file_path = 'Resources/HR_Analytics.csv.csv'
+file_path = 'Resources/Data/HR_Analytics.csv.csv'
 df = pd.read_csv(file_path)
 
 # Encoding categorical variables

@@ -10,7 +10,7 @@ Karanth, M. (2020). Tabular summary of HR analytics dataset. [Data set]. Zenodo.
 import pandas as pd
 
 # Load the dataset
-file_path = 'Resources/HR_Analytics.csv.csv'
+file_path = 'Resources/Data/HR_Analytics.csv.csv'
 df = pd.read_csv(file_path)
 
 # Show some basic information about the dataset
