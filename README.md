@@ -106,7 +106,7 @@ y_resampled.value_counts()
 ```
 
 # 逻辑回归
-祝一切安好
+Wait for Write
 
 # 神经网络
 使用Tensorflow构建神经网络
