@@ -41,7 +41,7 @@ df.info(), df.head()
 
 # 数据可视化结果
 ## 原数据-数值型变量可视化
-![avatar](Resources/IMG/RawDataBasic1.png) ![avatar](Resources/IMG/BalanceDataBasic1.png)
+![avatar](Resources/IMG/RawDataBasic1.png)
 ## 原数据-分类型变量可视化
 ![avatar](Resources/IMG/RawDataBasic2.png)
 ## 原数据-数值型变量与Attrition的关系
