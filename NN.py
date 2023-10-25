@@ -16,7 +16,9 @@ tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
 
 # 加载和准备数据
 df = pd.read_csv('Resources/Data/Encoded_Resampled_HR_Analytics.csv')
-X = df.drop(['Attrition', 'Over18'], axis=1)
+# X = df.drop(['Attrition', 'Over18', 'StandardHours', 'Department'], axis=1)
+X = df[['YearsWithCurrManager', 'YearsSinceLastPromotion', 'YearsInCurrentRole', 'TrainingTimesLastYear', 'Age',
+        'JobInvolvement', 'MaritalStatus']]
 y = df['Attrition']
 # y = df['Attrition']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
