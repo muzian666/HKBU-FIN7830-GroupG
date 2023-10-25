@@ -1,4 +1,12 @@
 # HKBU-FIN7830-GP
+
+## To Do List
+- [ ] 清理数据集
+- [x] 平衡数据集（使用SMOTE算法）
+- [ ] 数据可视化（还需要更多）
+- [ ] 逻辑回归模型（作为Baseline）
+- [ ] 神经网络模型（当前最高准确率88.8%）
+
 ## Dataset Citation
 ```
 Karanth, M. (2020). Tabular summary of HR analytics dataset. [Data set]. Zenodo. https://doi.org/10.5281/zenodo.4088439
