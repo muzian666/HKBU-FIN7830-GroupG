@@ -66,9 +66,15 @@ df.info(), df.head()
 ![avatar](Resources/IMG/BalanceDataRelation2.png)
 
 # 逻辑回归
-## 实验性写法 (Pytorch)
+## 实验性写法 (Pytorch，基于原始数据集)
 ### 基本信息
 ```
+模型结果：
+Test Loss: 0.4122784435749054
+Test Accuracy: 0.8117408906882592
+Test ROC-AUC: 0.8952131147540984
+Test F1 Score: 0.812121212121212
+
 模型架构和参数：
 LogisticRegressionModel(
 (linear): Linear(in_features=34, out_features=1, bias=True)
@@ -83,6 +89,8 @@ LogisticRegressionModel(
    0.70300335 -0.4906797   0.46116477 -0.6617272 ]]
 偏置: [-0.0540861]
 ```
+![LogicalRegressionPytorchAdam.png](Resources%2FIMG%2FLogicalRegressionPytorchAdam.png))
+
 ### 公式
 ![avatar](Resources/IMG/LRfunction.png)
 
