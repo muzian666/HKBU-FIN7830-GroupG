@@ -96,86 +96,10 @@ LogisticRegressionModel(
 ![avatar](Resources/IMG/LRfunction.png)
 
 # 神经网络
-使用Tensorflow构建神经网络
+使用Pytorch构建神经网络
 ```python
-# 需要导入图的库
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras import regularizers
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
-```
-
-``` python
-# 定义模型结构
-model = Sequential([
-    Dense(64, activation='relu', input_shape=(X_train.shape[1],), kernel_regularizer=regularizers.l1_l2(l1=0.01, l2=0.01)),
-    Dropout(0.5),
-    Dense(32, activation='relu', kernel_regularizer=regularizers.l2(0.01)),
-    Dropout(0.5),
-    Dense(16, activation='relu'),
-    Dense(1, activation='sigmoid')
-])
-```
-## 考虑加入L1/L2正则化
-```python
-from tensorflow.keras import regularizers
-Dense(64, activation='relu', kernel_regularizer=regularizers.l1(0.01))
-```
-## 加入DropOut层
-```python
-from tensorflow.keras.layers import Dropout
-model.add(Dropout(0.5))
-```
-## 加入正则化和Dropout后的模型结构
-```python
-model = Sequential([
-    # 第一层: 输入层，不需要正则化或 Dropout
-    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
-    
-    # 第二层: 隐藏层，添加 L1/L2 正则化
-    Dense(64, activation='relu', kernel_regularizer=regularizers.l1_l2(l1=0.01, l2=0.01)),
-    
-    # 添加 Dropout 层
-    Dropout(0.5),
-    
-    # 第三层: 隐藏层，添加 L2 正则化
-    Dense(32, activation='relu', kernel_regularizer=regularizers.l2(0.01)),
-    
-    # 添加 Dropout 层
-    Dropout(0.5),
-    
-    # 输出层: 通常不需要正则化或 Dropout
-    Dense(1, activation='sigmoid')
-])
-```
-
-## 可视化神经元
-```python
-import matplotlib.pyplot as plt
-
-history = model.fit(X_train, y_train, epochs=20, batch_size=32, validation_split=0.2)
-
-# Plot training & validation accuracy values
-plt.plot(history.history['accuracy'])
-plt.plot(history.history['val_accuracy'])
-plt.title('Model accuracy')
-plt.ylabel('Accuracy')
-plt.xlabel('Epoch')
-plt.legend(['Train', 'Test'], loc='upper left')
-plt.show()
-```
-## 使用Adam优化器
-```python
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-```
-
-## 获得模型所有层权重
-```python
-for i, layer in enumerate(model.layers):
-    weights = layer.get_weights()[0]
-    biases = layer.get_weights()[1]
-    print(f"Layer {i} - Weights:\n{weights}, Biases:\n{biases}")
+# 安装CPU版Pytorch
+pip3 install torch torchvision torchaudio
+# 安装GPU(CUDA12)版Pytorch
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
