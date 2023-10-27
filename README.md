@@ -1,9 +1,9 @@
 # HKBU-FIN7830-GP
 
 ## To Do List
-- [ ] 清理数据集
 - [x] 平衡数据集（使用SMOTE算法）
 - [ ] 数据可视化（还需要更多）
+- [ ] 数据预处理（例如PCA）
 - [ ] 逻辑回归模型（作为Baseline）
 - [ ] 神经网络模型（当前最高准确率88.8%）
 
@@ -67,6 +67,7 @@ df.info(), df.head()
 
 # 逻辑回归
 ## 实验性写法 (Pytorch，基于原始数据集)
+代码和详细内容见[LogicalRegression-Pytorch-Vis.ipynb](NotUse%2FLogicalRegression-Pytorch-Vis.ipynb)
 ### 基本信息
 ```
 模型结果：
