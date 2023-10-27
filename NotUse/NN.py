@@ -15,7 +15,7 @@ log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
 
 # 加载和准备数据
-df = pd.read_csv('Resources/Data/Encoded_Resampled_HR_Analytics.csv')
+df = pd.read_csv('../Resources/Data/Encoded_Resampled_HR_Analytics.csv')
 # X = df.drop(['Attrition', 'Over18', 'StandardHours', 'Department'], axis=1)
 X = df[['YearsWithCurrManager', 'YearsSinceLastPromotion', 'YearsInCurrentRole', 'TrainingTimesLastYear', 'Age',
         'JobInvolvement', 'MaritalStatus']]
@@ -59,5 +59,5 @@ loss, accuracy = model.evaluate(X_test_scaled, y_test)
 print(f"Test loss: {loss}, Test accuracy: {accuracy}")
 
 # 可视化
-tf.keras.utils.plot_model(model, to_file='model.png', show_shapes=True)
-tf.saved_model.save(model, 'Resources/Model/Model')
+tf.keras.utils.plot_model(model, to_file='../model.png', show_shapes=True)
+tf.saved_model.save(model, '../Resources/Model/Model')
