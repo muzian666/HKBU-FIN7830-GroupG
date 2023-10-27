@@ -5,7 +5,7 @@
 - [ ] 数据可视化（还需要更多）
 - [ ] 数据预处理（例如PCA）
 - [ ] 逻辑回归模型（作为Baseline）
-- [ ] 神经网络模型（当前最高准确率88.8%）
+- [ ] 神经网络模型（当前最高准确率90.551%）
 
 ## Dataset Citation
 ```
@@ -102,4 +102,59 @@ LogisticRegressionModel(
 pip3 install torch torchvision torchaudio
 # 安装GPU(CUDA12)版Pytorch
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+模型架构：
+```python
+class EnhancedNN(nn.Module):
+    def __init__(self):
+        super(EnhancedNN, self).__init__()
+        self.fc1 = nn.Linear(34, 64)
+        self.dropout1 = nn.Dropout(0.5)
+        self.fc2 = nn.Linear(64, 128)
+        self.dropout2 = nn.Dropout(0.5)
+        self.fc3 = nn.Linear(128, 256)
+        self.fc4 = nn.Linear(256, 128)
+        self.fc5 = nn.Linear(128, 64)
+        self.fc6 = nn.Linear(64, 2)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.dropout1(x)
+        x = torch.relu(self.fc2(x))
+        x = self.dropout2(x)
+        x = torch.relu(self.fc3(x))
+        x = torch.relu(self.fc4(x))
+        x = torch.relu(self.fc5(x))
+        x = self.fc6(x)
+        return x
+```
+基于该模型架构，实现了90.551%的准确率，详细信息如下：
+```
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+Average Accuracy: 0.9055078795443908
+Average F1 Score: 0.9074476653232741
+Average ROC AUC: 0.9054820446989895
+```
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+Linear-1                [-1, 1, 64]           2,240
+Dropout-2                [-1, 1, 64]               0
+Linear-3               [-1, 1, 128]           8,320
+Dropout-4               [-1, 1, 128]               0
+Linear-5               [-1, 1, 256]          33,024
+Linear-6               [-1, 1, 128]          32,896
+Linear-7                [-1, 1, 64]           8,256
+Linear-8                 [-1, 1, 2]             130
+================================================================
+Total params: 84,866
+Trainable params: 84,866
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.01
+Params size (MB): 0.32
+Estimated Total Size (MB): 0.33
+----------------------------------------------------------------
 ```
