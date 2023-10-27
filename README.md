@@ -84,7 +84,7 @@ LogisticRegressionModel(
 偏置: [-0.0540861]
 ```
 ### 公式
-\ln\left(\frac{p}{1 - p}\right) = -0.0541 - 0.0955 \times \text{Age} - 0.2081 \times \text{BusinessTravel} - 0.0742 \times \text{DailyRate} - 0.2123 \times \text{Department} + 0.2951 \times \text{DistanceFromHome} - 0.3099 \times \text{Education} - 0.0198 \times \text{EducationField} + 0.0405 \times \text{EmployeeCount} + 0.0583 \times \text{EmployeeNumber} - 0.6642 \times \text{EnvironmentSatisfaction} - 0.2009 \times \text{Gender} - 0.0849 \times \text{HourlyRate} - 0.6471 \times \text{JobInvolvement} - 0.6597 \times \text{JobLevel} + 0.2866 \times \text{JobRole} - 0.5800 \times \text{JobSatisfaction} - 0.1946 \times \text{MaritalStatus} + 0.2367 \times \text{MonthlyIncome} - 0.0438 \times \text{MonthlyRate} + 0.2597 \times \text{NumCompaniesWorked} + 0.1534 \times \text{Over18} + 0.4542 \times \text{OverTime} - 0.0822 \times \text{PercentSalaryHike} - 0.2576 \times \text{PerformanceRating} - 0.4868 \times \text{RelationshipSatisfaction} - 0.0277 \times \text{StandardHours} - 0.8175 \times \text{StockOptionLevel} - 0.3688 \times \text{TotalWorkingYears} - 0.4067 \times \text{TrainingTimesLastYear} - 0.4596 \times \text{WorkLifeBalance} + 0.7030 \times \text{YearsAtCompany} - 0.4907 \times \text{YearsInCurrentRole} + 0.4612 \times \text{YearsSinceLastPromotion} - 0.6617 \times \text{YearsWithCurrManager}
+![avatar](Resources/IMG/LRfunction.png)
 
 # 神经网络
 使用Tensorflow构建神经网络
