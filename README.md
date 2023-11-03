@@ -3,9 +3,10 @@
 ## To Do List
 - [x] 平衡数据集（使用SMOTE算法）
 - [ ] 数据可视化（还需要更多）
-- [ ] 数据预处理（例如PCA）
+- [ ] ~~数据预处理（例如PCA）~~ (弃用)
 - [ ] 逻辑回归模型（作为Baseline）
 - [ ] 神经网络模型（当前最高准确率90.551%）
+- [ ] 模型部署 (API & Web)
 
 ## Dataset Citation
 ```
@@ -128,7 +129,7 @@ class EnhancedNN(nn.Module):
         x = self.fc6(x)
         return x
 ```
-基于该模型架构，实现了90.551%的准确率，详细信息如下：
+基于该模型架构，实现了平均90.551%的准确率，详细信息如下：
 ```
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 Average Accuracy: 0.9055078795443908
