@@ -1,11 +1,12 @@
 # HKBU-FIN7830-GP
 
 ## To Do List
-- [ ] 清理数据集
 - [x] 平衡数据集（使用SMOTE算法）
 - [ ] 数据可视化（还需要更多）
+- [ ] ~~数据预处理（例如PCA）~~ (弃用)
 - [ ] 逻辑回归模型（作为Baseline）
-- [ ] 神经网络模型（当前最高准确率88.8%）
+- [ ] 神经网络模型（当前最高准确率90.551%）
+- [ ] 模型部署 (API & Web)
 
 ## Dataset Citation
 ```
@@ -66,89 +67,95 @@ df.info(), df.head()
 ![avatar](Resources/IMG/BalanceDataRelation2.png)
 
 # 逻辑回归
-Wait for Write
+## 实验性写法 (Pytorch，基于原始数据集)
+代码和详细内容见[LogicalRegression-Pytorch-Vis.ipynb](NotUse%2FLogicalRegression-Pytorch-Vis.ipynb)
+### 基本信息
+```
+模型结果：
+Test Loss: 0.4122784435749054
+Test Accuracy: 0.8117408906882592
+Test ROC-AUC: 0.8952131147540984
+Test F1 Score: 0.812121212121212
+
+模型架构和参数：
+LogisticRegressionModel(
+(linear): Linear(in_features=34, out_features=1, bias=True)
+)
+
+权重与偏置：
+权重: [[-0.09553184 -0.2081166  -0.07418099 -0.2123217   0.29514578 -0.30988827
+  -0.01981156  0.04050073  0.05827003 -0.6642269  -0.20088294 -0.0848937
+  -0.64710206 -0.6597117   0.2865685  -0.58003306 -0.19455934  0.23665671
+  -0.04382532  0.259706    0.15341793  0.45419192 -0.08222049 -0.2576029
+  -0.48684818 -0.02765574 -0.8174921  -0.36876386 -0.40666512 -0.45958838
+   0.70300335 -0.4906797   0.46116477 -0.6617272 ]]
+偏置: [-0.0540861]
+```
+![LogicalRegressionPytorchAdam.png](Resources%2FIMG%2FLogicalRegressionPytorchAdam.png))
+
+### 公式
+![avatar](Resources/IMG/LRfunction.png)
 
 # 神经网络
-使用Tensorflow构建神经网络
+使用Pytorch构建神经网络
 ```python
-# 需要导入图的库
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras import regularizers
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
+# 安装CPU版Pytorch
+pip3 install torch torchvision torchaudio
+# 安装GPU(CUDA12)版Pytorch
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
+模型架构：
+```python
+class EnhancedNN(nn.Module):
+    def __init__(self):
+        super(EnhancedNN, self).__init__()
+        self.fc1 = nn.Linear(34, 64)
+        self.dropout1 = nn.Dropout(0.5)
+        self.fc2 = nn.Linear(64, 128)
+        self.dropout2 = nn.Dropout(0.5)
+        self.fc3 = nn.Linear(128, 256)
+        self.fc4 = nn.Linear(256, 128)
+        self.fc5 = nn.Linear(128, 64)
+        self.fc6 = nn.Linear(64, 2)
 
-``` python
-# 定义模型结构
-model = Sequential([
-    Dense(64, activation='relu', input_shape=(X_train.shape[1],), kernel_regularizer=regularizers.l1_l2(l1=0.01, l2=0.01)),
-    Dropout(0.5),
-    Dense(32, activation='relu', kernel_regularizer=regularizers.l2(0.01)),
-    Dropout(0.5),
-    Dense(16, activation='relu'),
-    Dense(1, activation='sigmoid')
-])
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.dropout1(x)
+        x = torch.relu(self.fc2(x))
+        x = self.dropout2(x)
+        x = torch.relu(self.fc3(x))
+        x = torch.relu(self.fc4(x))
+        x = torch.relu(self.fc5(x))
+        x = self.fc6(x)
+        return x
 ```
-## 考虑加入L1/L2正则化
-```python
-from tensorflow.keras import regularizers
-Dense(64, activation='relu', kernel_regularizer=regularizers.l1(0.01))
+基于该模型架构，实现了平均90.551%的准确率，详细信息如下：
 ```
-## 加入DropOut层
-```python
-from tensorflow.keras.layers import Dropout
-model.add(Dropout(0.5))
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+Average Accuracy: 0.9055078795443908
+Average F1 Score: 0.9074476653232741
+Average ROC AUC: 0.9054820446989895
 ```
-## 加入正则化和Dropout后的模型结构
-```python
-model = Sequential([
-    # 第一层: 输入层，不需要正则化或 Dropout
-    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
-    
-    # 第二层: 隐藏层，添加 L1/L2 正则化
-    Dense(64, activation='relu', kernel_regularizer=regularizers.l1_l2(l1=0.01, l2=0.01)),
-    
-    # 添加 Dropout 层
-    Dropout(0.5),
-    
-    # 第三层: 隐藏层，添加 L2 正则化
-    Dense(32, activation='relu', kernel_regularizer=regularizers.l2(0.01)),
-    
-    # 添加 Dropout 层
-    Dropout(0.5),
-    
-    # 输出层: 通常不需要正则化或 Dropout
-    Dense(1, activation='sigmoid')
-])
 ```
-
-## 可视化神经元
-```python
-import matplotlib.pyplot as plt
-
-history = model.fit(X_train, y_train, epochs=20, batch_size=32, validation_split=0.2)
-
-# Plot training & validation accuracy values
-plt.plot(history.history['accuracy'])
-plt.plot(history.history['val_accuracy'])
-plt.title('Model accuracy')
-plt.ylabel('Accuracy')
-plt.xlabel('Epoch')
-plt.legend(['Train', 'Test'], loc='upper left')
-plt.show()
-```
-## 使用Adam优化器
-```python
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-```
-
-## 获得模型所有层权重
-```python
-for i, layer in enumerate(model.layers):
-    weights = layer.get_weights()[0]
-    biases = layer.get_weights()[1]
-    print(f"Layer {i} - Weights:\n{weights}, Biases:\n{biases}")
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+Linear-1                [-1, 1, 64]           2,240
+Dropout-2                [-1, 1, 64]               0
+Linear-3               [-1, 1, 128]           8,320
+Dropout-4               [-1, 1, 128]               0
+Linear-5               [-1, 1, 256]          33,024
+Linear-6               [-1, 1, 128]          32,896
+Linear-7                [-1, 1, 64]           8,256
+Linear-8                 [-1, 1, 2]             130
+================================================================
+Total params: 84,866
+Trainable params: 84,866
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.01
+Params size (MB): 0.32
+Estimated Total Size (MB): 0.33
+----------------------------------------------------------------
 ```
