@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Form</title>
+    <style>
+        #predictForm {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px; /* 设置表单项之间的间隙 */
+          margin-bottom: 20px; /* 在表单和按钮之间提供一些空间 */
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          flex-basis: calc(50% - 10px); /* 假设你想要每行两个表单项，间隙为10px */
+          min-width: 120px; /* 设置最小宽度，以避免表单项变得太小 */
+        }
+
+        .form-group label {
+          margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+          padding: 5px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          height: 35px; /* 设置输入框和下拉菜单的统一高度 */
+        }
+
+        #predictButton {
+          flex-basis: 100%;
+          padding: 10px;
+          border: none;
+          background-color: #007bff;
+          color: white;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        #predictButton:hover {
+          background-color: #0056b3;
+        }
+
+        /* 响应式布局：在小屏幕上，表单项占满整个宽度 */
+        @media (max-width: 600px) {
+          .form-group {
+            flex-basis: 100%;
+          }
+        }
+    </style>
+
+</head>
+<body>
+
+<h2>Prediction Form</h2>
+
+<button type="button" id="randomButton">Generate Random Numbers</button>
+
+<form id="predictForm">
+    <div class="form-group">
+    <label for="Age">Age:</label>
+    <input type="number" id="Age" name="Age" required min="18" max="60"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="BusinessTravel">Business Travel:</label>
+        <select id="BusinessTravel" name="BusinessTravel" required>
+            <option value="">Select...</option>
+            <option value="0">Non-Travel</option>
+            <option value="1">Travel Frequently</option>
+            <option value="2">Travel Rarely</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="DailyRate">Daily Rate:</label>
+    <input type="number" id="DailyRate" name="DailyRate" required min="102" max="1499"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="Department">Department:</label>
+        <select id="Department" name="Department" required>
+            <option value="">Select...</option>
+            <option value="0">Human Resources</option>
+            <option value="1">Research & Development</option>
+            <option value="2">Sales</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="DistanceFromHome">Distance From Home:</label>
+    <input type="number" id="DistanceFromHome" name="DistanceFromHome" required min="1" max="29"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="Education">Education:</label>
+    <input type="number" id="Education" name="Education" required min="1" max="5"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="EducationField">Education Field:</label>
+        <select id="EducationField" name="EducationField" required>
+            <option value="">Select...</option>
+            <option value="0">Human Resources</option>
+            <option value="1">Life Sciences</option>
+            <option value="2">Marketing</option>
+            <option value="3">Medical</option>
+            <option value="5">Technical Degree</option>
+            <option value="4">Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="EmployeeCount">Employee Count:</label>
+    <input type="number" id="EmployeeCount" name="EmployeeCount" required min="1" max="1"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="EmployeeNumber">Employee Number:</label>
+    <input type="number" id="EmployeeNumber" name="EmployeeNumber" required min="1" max="2068"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="EnvironmentSatisfaction">Environment Satisfaction:</label>
+    <input type="number" id="EnvironmentSatisfaction" name="EnvironmentSatisfaction" required min="1" max="4"><br><br>
+    </div>
+
+    <div class="form-group">
+        <label for="Gender">Gender:</label>
+        <select id="Gender" name="Gender" required>
+            <option value="">Select...</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="HourlyRate">Hourly Rate:</label>
+    <input type="number" id="HourlyRate" name="HourlyRate" required min="30" max="100"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="JobInvolvement">Job Involvement:</label>
+    <input type="number" id="JobInvolvement" name="JobInvolvement" required min="1" max="4"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="JobLevel">Job Level:</label>
+    <input type="number" id="JobLevel" name="JobLevel" required min="1" max="5"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="JobRole">Job Role:</label>
+        <select id="JobRole" name="JobRole" required>
+            <option value="">Select...</option>
+            <option value="0">Healthcare Representative</option>
+            <option value="1">Human Resources</option>
+            <option value="2">Laboratory Technician</option>
+            <option value="3">Manager</option>
+            <option value="4">Manufacturing Director</option>
+            <option value="5">Research Director</option>
+            <option value="6">Research Scientist</option>
+            <option value="7">Sales Executive</option>
+            <option value="8">Sales Representative</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="JobSatisfaction">Job Satisfaction:</label>
+    <input type="number" id="JobSatisfaction" name="JobSatisfaction" required min="1" max="4"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="MaritalStatus">Marital Status:</label>
+        <select id="MaritalStatus" name="MaritalStatus" required>
+            <option value="">Select...</option>
+            <option value="0">Divorced</option>
+            <option value="1">Married</option>
+            <option value="2">Single</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="MonthlyIncome">Monthly Income:</label>
+    <input type="number" id="MonthlyIncome" name="MonthlyIncome" required min="1009" max="19999"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="MonthlyRate">Monthly Rate:</label>
+    <input type="number" id="MonthlyRate" name="MonthlyRate" required min="2094" max="26999"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="NumCompaniesWorked">Number of Companies Worked:</label>
+    <input type="number" id="NumCompaniesWorked" name="NumCompaniesWorked" required min="0" max="9"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="Over18">Over 18:</label>
+        <select id="Over18" name="Over18" required>
+            <option value="">Select...</option>
+            <option value="0">Yes</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="OverTime">Over Time:</label>
+        <select id="OverTime" name="OverTime" required>
+            <option value="">Select...</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <label for="PercentSalaryHike">Percent Salary Hike:</label>
+    <input type="number" id="PercentSalaryHike" name="PercentSalaryHike" required min="11" max="25"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="PerformanceRating">Performance Rating:</label>
+    <input type="number" id="PerformanceRating" name="PerformanceRating" required min="3" max="4"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="RelationshipSatisfaction">Relationship Satisfaction:</label>
+    <input type="number" id="RelationshipSatisfaction" name="RelationshipSatisfaction" required min="1" max="4"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="StandardHours">Standard Hours:</label>
+    <input type="number" id="StandardHours" name="StandardHours" required min="80" max="80"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="StockOptionLevel">Stock Option Level:</label>
+    <input type="number" id="StockOptionLevel" name="StockOptionLevel" required min="0" max="3"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="TotalWorkingYears">Total Working Years:</label>
+    <input type="number" id="TotalWorkingYears" name="TotalWorkingYears" required min="0" max="40"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="TrainingTimesLastYear">Training Times Last Year:</label>
+    <input type="number" id="TrainingTimesLastYear" name="TrainingTimesLastYear" required min="0" max="6"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="WorkLifeBalance">Work Life Balance:</label>
+    <input type="number" id="WorkLifeBalance" name="WorkLifeBalance" required min="1" max="4"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="YearsAtCompany">Years at Company:</label>
+    <input type="number" id="YearsAtCompany" name="YearsAtCompany" required min="0" max="40"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="YearsInCurrentRole">Years in Current Role:</label>
+    <input type="number" id="YearsInCurrentRole" name="YearsInCurrentRole" required min="0" max="18"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="YearsSinceLastPromotion">Years Since Last Promotion:</label>
+    <input type="number" id="YearsSinceLastPromotion" name="YearsSinceLastPromotion" required min="0" max="15"><br><br>
+    </div>
+
+    <div class="form-group">
+    <label for="YearsWithCurrManager">Years with Current Manager:</label>
+    <input type="number" id="YearsWithCurrManager" name="YearsWithCurrManager" required min="0" max="17"><br><br>
+    </div>
+
+    <button type="button" id="predictButton">Predict</button>
+</form>
+
+<div id="result">Prediction results will be shown here.</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -67,6 +67,10 @@ df.info(), df.head()
 ![avatar](Resources/IMG/BalanceDataRelation2.png)
 
 # 逻辑回归
+## Statsmodel
+Wait for result
+
+
 ## 实验性写法 (Pytorch，基于原始数据集)
 代码和详细内容见[LogicalRegression-Pytorch-Vis.ipynb](NotUse%2FLogicalRegression-Pytorch-Vis.ipynb)
 ### 基本信息
