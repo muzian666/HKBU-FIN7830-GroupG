@@ -1,5 +1,10 @@
 # HKBU-FIN7830-GP
 
+
+## How to start API
+```
+uvicorn API:app --host 0.0.0.0 --port 8000 --reload
+```
 ## To Do List
 - [x] 平衡数据集（使用SMOTE算法）
 - [ ] 数据可视化（还需要更多）

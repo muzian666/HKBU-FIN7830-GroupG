@@ -38,7 +38,7 @@ document.getElementById('predictButton').addEventListener('click', function() {
         }
     };
 
-    fetch("http://127.0.0.1:8000/predict/", {
+    fetch("https://api.groupg.pass3exceed4.com/predict/", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -47,7 +47,13 @@ document.getElementById('predictButton').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(data => {
+        const prediction = data;
         document.getElementById('result').textContent = 'Prediction: ' + JSON.stringify(data);
+        document.getElementById('result').textContent = 'Prediction: ' + JSON.stringify(prediction);
+        const probabilityPercent = prediction.probability_1 * 100;
+        const probabilityBar = document.getElementById('probabilityBar');
+        probabilityBar.style.width = probabilityPercent + '%';
+        probabilityBar.innerText = probabilityPercent.toFixed(2) + '%';
     })
     .catch(error => {
         console.error('Error:', error);

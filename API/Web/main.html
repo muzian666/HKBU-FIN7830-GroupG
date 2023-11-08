@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Prediction Form</title>
+    <title>Group G NN Prediction</title>
+    <link rel="icon" type="image/png" href="icon.png">
     <style>
         #predictForm {
           display: flex;
@@ -44,6 +45,33 @@
           background-color: #0056b3;
         }
 
+        #randomButton {
+          flex-basis: 100%;
+          padding: 10px;
+          border: none;
+          background-color: #007bff;
+          color: white;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        #randomButton:hover {
+          background-color: #0056b3;
+        }
+        #probabilityContainer {
+            width: 100%;
+            background-color: #ddd;
+
+        }
+        #probabilityBar {
+            width: 0%;
+            height: 30px;
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+
+        }
         /* 响应式布局：在小屏幕上，表单项占满整个宽度 */
         @media (max-width: 600px) {
           .form-group {
@@ -57,16 +85,14 @@
 
 <h2>Prediction Form</h2>
 
-<button type="button" id="randomButton">Generate Random Numbers</button>
-
 <form id="predictForm">
     <div class="form-group">
-    <label for="Age">Age:</label>
-    <input type="number" id="Age" name="Age" required min="18" max="60"><br><br>
+        <label for="Age">Age:</label>
+        <input type="number" id="Age" name="Age" required min="18" max="60"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="BusinessTravel">Business Travel:</label>
+        <label for="BusinessTravel">Business Travel:</label>
         <select id="BusinessTravel" name="BusinessTravel" required>
             <option value="">Select...</option>
             <option value="0">Non-Travel</option>
@@ -76,12 +102,12 @@
     </div>
 
     <div class="form-group">
-    <label for="DailyRate">Daily Rate:</label>
-    <input type="number" id="DailyRate" name="DailyRate" required min="102" max="1499"><br><br>
+        <label for="DailyRate">Daily Rate:</label>
+        <input type="number" id="DailyRate" name="DailyRate" required min="102" max="1499"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="Department">Department:</label>
+        <label for="Department">Department:</label>
         <select id="Department" name="Department" required>
             <option value="">Select...</option>
             <option value="0">Human Resources</option>
@@ -91,17 +117,17 @@
     </div>
 
     <div class="form-group">
-    <label for="DistanceFromHome">Distance From Home:</label>
-    <input type="number" id="DistanceFromHome" name="DistanceFromHome" required min="1" max="29"><br><br>
+        <label for="DistanceFromHome">Distance From Home:</label>
+        <input type="number" id="DistanceFromHome" name="DistanceFromHome" required min="1" max="29"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="Education">Education:</label>
-    <input type="number" id="Education" name="Education" required min="1" max="5"><br><br>
+        <label for="Education">Education:</label>
+        <input type="number" id="Education" name="Education" required min="1" max="5"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="EducationField">Education Field:</label>
+        <label for="EducationField">Education Field:</label>
         <select id="EducationField" name="EducationField" required>
             <option value="">Select...</option>
             <option value="0">Human Resources</option>
@@ -114,18 +140,18 @@
     </div>
 
     <div class="form-group">
-    <label for="EmployeeCount">Employee Count:</label>
-    <input type="number" id="EmployeeCount" name="EmployeeCount" required min="1" max="1"><br><br>
+        <label for="EmployeeCount">Employee Count:</label>
+        <input type="number" id="EmployeeCount" name="EmployeeCount" required min="1" max="1"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="EmployeeNumber">Employee Number:</label>
-    <input type="number" id="EmployeeNumber" name="EmployeeNumber" required min="1" max="2068"><br><br>
+        <label for="EmployeeNumber">Employee Number:</label>
+        <input type="number" id="EmployeeNumber" name="EmployeeNumber" required min="1" max="2068"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="EnvironmentSatisfaction">Environment Satisfaction:</label>
-    <input type="number" id="EnvironmentSatisfaction" name="EnvironmentSatisfaction" required min="1" max="4"><br><br>
+        <label for="EnvironmentSatisfaction">Environment Satisfaction:</label>
+        <input type="number" id="EnvironmentSatisfaction" name="EnvironmentSatisfaction" required min="1" max="4"><br><br>
     </div>
 
     <div class="form-group">
@@ -138,22 +164,22 @@
     </div>
 
     <div class="form-group">
-    <label for="HourlyRate">Hourly Rate:</label>
-    <input type="number" id="HourlyRate" name="HourlyRate" required min="30" max="100"><br><br>
+        <label for="HourlyRate">Hourly Rate:</label>
+        <input type="number" id="HourlyRate" name="HourlyRate" required min="30" max="100"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="JobInvolvement">Job Involvement:</label>
-    <input type="number" id="JobInvolvement" name="JobInvolvement" required min="1" max="4"><br><br>
+        <label for="JobInvolvement">Job Involvement:</label>
+        <input type="number" id="JobInvolvement" name="JobInvolvement" required min="1" max="4"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="JobLevel">Job Level:</label>
-    <input type="number" id="JobLevel" name="JobLevel" required min="1" max="5"><br><br>
+        <label for="JobLevel">Job Level:</label>
+        <input type="number" id="JobLevel" name="JobLevel" required min="1" max="5"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="JobRole">Job Role:</label>
+        <label for="JobRole">Job Role:</label>
         <select id="JobRole" name="JobRole" required>
             <option value="">Select...</option>
             <option value="0">Healthcare Representative</option>
@@ -169,12 +195,12 @@
     </div>
 
     <div class="form-group">
-    <label for="JobSatisfaction">Job Satisfaction:</label>
-    <input type="number" id="JobSatisfaction" name="JobSatisfaction" required min="1" max="4"><br><br>
+        <label for="JobSatisfaction">Job Satisfaction:</label>
+        <input type="number" id="JobSatisfaction" name="JobSatisfaction" required min="1" max="4"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="MaritalStatus">Marital Status:</label>
+        <label for="MaritalStatus">Marital Status:</label>
         <select id="MaritalStatus" name="MaritalStatus" required>
             <option value="">Select...</option>
             <option value="0">Divorced</option>
@@ -184,22 +210,22 @@
     </div>
 
     <div class="form-group">
-    <label for="MonthlyIncome">Monthly Income:</label>
-    <input type="number" id="MonthlyIncome" name="MonthlyIncome" required min="1009" max="19999"><br><br>
+        <label for="MonthlyIncome">Monthly Income:</label>
+        <input type="number" id="MonthlyIncome" name="MonthlyIncome" required min="1009" max="19999"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="MonthlyRate">Monthly Rate:</label>
-    <input type="number" id="MonthlyRate" name="MonthlyRate" required min="2094" max="26999"><br><br>
+        <label for="MonthlyRate">Monthly Rate:</label>
+        <input type="number" id="MonthlyRate" name="MonthlyRate" required min="2094" max="26999"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="NumCompaniesWorked">Number of Companies Worked:</label>
-    <input type="number" id="NumCompaniesWorked" name="NumCompaniesWorked" required min="0" max="9"><br><br>
+        <label for="NumCompaniesWorked">Number of Companies Worked:</label>
+        <input type="number" id="NumCompaniesWorked" name="NumCompaniesWorked" required min="0" max="9"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="Over18">Over 18:</label>
+        <label for="Over18">Over 18:</label>
         <select id="Over18" name="Over18" required>
             <option value="">Select...</option>
             <option value="0">Yes</option>
@@ -207,7 +233,7 @@
     </div>
 
     <div class="form-group">
-    <label for="OverTime">Over Time:</label>
+        <label for="OverTime">Over Time:</label>
         <select id="OverTime" name="OverTime" required>
             <option value="">Select...</option>
             <option value="0">No</option>
@@ -216,70 +242,76 @@
     </div>
 
     <div class="form-group">
-    <label for="PercentSalaryHike">Percent Salary Hike:</label>
-    <input type="number" id="PercentSalaryHike" name="PercentSalaryHike" required min="11" max="25"><br><br>
+        <label for="PercentSalaryHike">Percent Salary Hike:</label>
+        <input type="number" id="PercentSalaryHike" name="PercentSalaryHike" required min="11" max="25"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="PerformanceRating">Performance Rating:</label>
-    <input type="number" id="PerformanceRating" name="PerformanceRating" required min="3" max="4"><br><br>
+        <label for="PerformanceRating">Performance Rating:</label>
+        <input type="number" id="PerformanceRating" name="PerformanceRating" required min="3" max="4"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="RelationshipSatisfaction">Relationship Satisfaction:</label>
-    <input type="number" id="RelationshipSatisfaction" name="RelationshipSatisfaction" required min="1" max="4"><br><br>
+        <label for="RelationshipSatisfaction">Relationship Satisfaction:</label>
+        <input type="number" id="RelationshipSatisfaction" name="RelationshipSatisfaction" required min="1" max="4"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="StandardHours">Standard Hours:</label>
-    <input type="number" id="StandardHours" name="StandardHours" required min="80" max="80"><br><br>
+        <label for="StandardHours">Standard Hours:</label>
+        <input type="number" id="StandardHours" name="StandardHours" required min="80" max="80"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="StockOptionLevel">Stock Option Level:</label>
-    <input type="number" id="StockOptionLevel" name="StockOptionLevel" required min="0" max="3"><br><br>
+        <label for="StockOptionLevel">Stock Option Level:</label>
+        <input type="number" id="StockOptionLevel" name="StockOptionLevel" required min="0" max="3"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="TotalWorkingYears">Total Working Years:</label>
-    <input type="number" id="TotalWorkingYears" name="TotalWorkingYears" required min="0" max="40"><br><br>
+        <label for="TotalWorkingYears">Total Working Years:</label>
+        <input type="number" id="TotalWorkingYears" name="TotalWorkingYears" required min="0" max="40"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="TrainingTimesLastYear">Training Times Last Year:</label>
-    <input type="number" id="TrainingTimesLastYear" name="TrainingTimesLastYear" required min="0" max="6"><br><br>
+        <label for="TrainingTimesLastYear">Training Times Last Year:</label>
+        <input type="number" id="TrainingTimesLastYear" name="TrainingTimesLastYear" required min="0" max="6"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="WorkLifeBalance">Work Life Balance:</label>
-    <input type="number" id="WorkLifeBalance" name="WorkLifeBalance" required min="1" max="4"><br><br>
+        <label for="WorkLifeBalance">Work Life Balance:</label>
+        <input type="number" id="WorkLifeBalance" name="WorkLifeBalance" required min="1" max="4"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="YearsAtCompany">Years at Company:</label>
-    <input type="number" id="YearsAtCompany" name="YearsAtCompany" required min="0" max="40"><br><br>
+        <label for="YearsAtCompany">Years at Company:</label>
+        <input type="number" id="YearsAtCompany" name="YearsAtCompany" required min="0" max="40"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="YearsInCurrentRole">Years in Current Role:</label>
-    <input type="number" id="YearsInCurrentRole" name="YearsInCurrentRole" required min="0" max="18"><br><br>
+        <label for="YearsInCurrentRole">Years in Current Role:</label>
+        <input type="number" id="YearsInCurrentRole" name="YearsInCurrentRole" required min="0" max="18"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="YearsSinceLastPromotion">Years Since Last Promotion:</label>
-    <input type="number" id="YearsSinceLastPromotion" name="YearsSinceLastPromotion" required min="0" max="15"><br><br>
+        <label for="YearsSinceLastPromotion">Years Since Last Promotion:</label>
+        <input type="number" id="YearsSinceLastPromotion" name="YearsSinceLastPromotion" required min="0" max="15"><br><br>
     </div>
 
     <div class="form-group">
-    <label for="YearsWithCurrManager">Years with Current Manager:</label>
-    <input type="number" id="YearsWithCurrManager" name="YearsWithCurrManager" required min="0" max="17"><br><br>
+        <label for="YearsWithCurrManager">Years with Current Manager:</label>
+        <input type="number" id="YearsWithCurrManager" name="YearsWithCurrManager" required min="0" max="17"><br><br>
     </div>
-
+    <button type="button" id="randomButton">Generate Random Numbers</button>
     <button type="button" id="predictButton">Predict</button>
 </form>
 
 <div id="result">Prediction results will be shown here.</div>
 
+<div id="probabilityContainer" style="width: 100%; background-color: #ddd;">
+    <div id="probabilityBar" style="width: 0%; height: 30px; background-color: #4CAF50;"></div>
+</div>
+
+
 <script src="script.js"></script>
+
 </body>
 </html>
