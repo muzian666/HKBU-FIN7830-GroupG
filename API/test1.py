@@ -1,9 +1,8 @@
 import requests
 
-# 假设的API URL，你需要替换成你自己的URL
 api_url = "http://127.0.0.1:8000/predict/"
 
-# 使用data_head中的数据构造请求体
+# Use the data in data_head to construct the request body
 request_data = {
     "features": {
         "Age": 20,
@@ -43,8 +42,8 @@ request_data = {
     }
 }
 
-# 发送POST请求到API
+# Send POST request to API
 response = requests.post(api_url, json=request_data)
 
-# 打印响应
+# Print response
 print(response.json())

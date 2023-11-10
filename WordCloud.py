@@ -36,6 +36,6 @@ plt.axis("off")
 plt.tight_layout(pad=0)
 
 # Save the word cloud image to file
-wordcloud.to_file("word_cloud.png")
+wordcloud.to_file("WordCloud.png")
 
 plt.show()
