@@ -2,7 +2,30 @@
 
  <img src="./Resources/IMG/ProjectIMG.png" alt="Front-Image" align=center />
 
+# Abstract
+In order to study the influencing factors of the company's employee turnover rate, we grabbed a human resource information dataset on Zenodo, and analyzed the degree of influence on the factors of "distance from home", "number of companies worked", "number of years in the company", and "number of years since the last promotion", "business trip", "department", "field of education", "gender", "job role", and "overtime" on the turnover rate of the employees. Using SMOTE algorithm to preprocess and improve the data, and adopting two methods of logistic regression and neural network respectively, it was concluded that factors such as "distance from home", "job role", "number of companies worked for", "number of years in the company", and "number of years since the last promotion" have a greater impact on the employee separation rate, and relevant suggestions were made for the important factors.
 
+# Introduction
+Employee turnover is a significant factor in company performance. A high turnover rate not only increases the monetary and time costs of recruiting and training new employees for the company, but also may cause delays or interruptions in work assignments, affecting productivity, as well as team morale and company image. At the same time, we used a crawler to collect discussions about leaving jobs on the Hong Kong forum uwants, and wanted to briefly understand people's thoughts and reasons for leaving jobs by analyzing the word cloud of the forum's discussion content, and the results showed that the keywords "time", "company The results show that the keywords "time", "company", "go", "work", "team", "leave The discussion of "company", "go", "work", "team", "leave", etc. is very hot. Separation issues and high turnover rates are hot issues in the current socio-economic situation. Therefore, it is of great significance for enterprise development to analyze and understand in detail the important factors affecting the departure of employees and take appropriate measures to reduce the turnover rate.
+
+![WordCloud.png](Resources%2FIMG%2FWordCloud.png)
+
+# Business Problem
+What factors are associated with employee turnover in a company?
+
+There may be various reasons for employees to leave their jobs, but the root of the problem is that the individual's expectations of the job do not match the company's current situation.
+
+a.Salary level and welfare benefits, whether the company has a perfect salary system and a scientific and reasonable salary and welfare system.
+
+b.Promotion opportunities and career development, whether the employee's work ability, work experience and position are suitable, whether the company has a clear and enforceable promotion channel for employees and an employee training and development program.
+
+c.Work environment and atmosphere, including the management ability and management style of company leaders, company culture and values.
+
+d.Work content and challenges, whether the work can stimulate the enthusiasm of employees to work, to help employees realize their personal values.
+
+e.Work-life balance, including the intensity of the work, overtime work, the distance of the commute, which can affect the employee's satisfaction with the job
+
+# Detail of this Project
 ## Project Introduction
 ```
 This project is for HKBU FIN7830 Financial Computing with Python (Section 1) Group G
@@ -251,4 +274,15 @@ uvicorn API:app --host 0.0.0.0 --port 8000 --reload
 See: [test1.py](API%2Ftest1.py)
 
 
-# End of README
+# Conclusion
+Combining the results of the sample data analysis derived from the Logical Regression, Stock Option Level has a more significant impact on the employee turnover rate on the negative side, and Over Time has a more significant impact on the positive side. Therefore, we give the following optimization suggestions for these influencing factors:
+
+A.Strengthen enterprise management, sound management system, such as performance appraisal system, training programs, etc., to help improve the quality and efficiency of employees' work.
+
+B. Improve the salary management system, set fair and reasonable salaries, and set stock option incentives to enhance employees' sense of belonging to the company and development expectations.
+
+C. Improve the company's career development system, open up promotion channels for employees, and pay timely attention to employees' ability level, work experience, length of service, age, and their career development and the matching of corresponding positions.
+
+D. Develop a complete and clear employee training program, and pay attention to the career development and personal ability of employees.
+
+E. Pay attention to the mental health and working condition of employees, require all departments to use labor reasonably, combine work and leisure, and ensure that employees have a reasonable range of working hours and a comfortable office environment.
