@@ -1,16 +1,46 @@
 # HKBU FIN7830 GroupG 2023/11/15
 
- <img src="./Resources/IMG/img.png" width = "1792" height = "1024" alt="Front-Image" align=center />
+ <img src="./Resources/IMG/ProjectIMG.png" alt="Front-Image" align=center />
 
-# Project Structure Explain
+# Project Explain
+## Project Introduction
 ```
-├─API (API Relate File)
-├─NotUse (Processing File, Ignore)
-└─Resources
-    ├─Data
-    │  └─WebData
-    ├─IMG
-    └─Model
+This project is for HKBU FIN7830 Financial Computing with Python (Section 1) Group G
+This project is written by following person:
+
+23420820 | Chen, Ziwei
+23473193 | Cheng, Hoi Laam
+23410868 | Hunag, Chengyi
+23417145 | Ji, Yanbo
+23447214 | Li, Qingan
+23461608 | Qu, Yibo
+23423927 | Wang, Jiayi
+23417056 | Xie, Siqi
+
+Ranking in no particular order, all the authors contributed to this project equally.
+```
+## Project Structure
+```
+├─Abstract
+├─Introduction (Motivation)
+├─Business Problem
+├─Data Description
+│   ├─Data Structure & Pre Process
+│   └─Data Visualization
+├─Data Analysis
+│   ├─Logical Regression Model
+│   │  ├─Model Build
+│   │  ├─Temporary Result
+│   │  ├─Verfication
+│   │  ├─Improvement
+│   │  ├─Final Result
+│   │  ├─Analysis Result
+│   │  └─Recommendation
+│   ├─Neural Network
+│   │  ├─Model Build & Result
+│   └─ └─Application
+├─Conclusion
+└─Reference
 ```
 
 ## How to start API
