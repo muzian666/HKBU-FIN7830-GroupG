@@ -22,13 +22,13 @@ app.add_middleware(
 )
 
 # Load ONNX model
-model_path = r"Resources/Model/model.onnx"
+model_path = r"C:\Users\LQA\Desktop\class\HKBU-FIN7830-GP\Resources\Model\model.onnx"
 session = ort.InferenceSession(model_path)
 input_name = session.get_inputs()[0].name
 output_name = session.get_outputs()[0].name
 
 # Load scaler
-scaler_path = r"Resources/Model/scaler.joblib"
+scaler_path = r"C:\Users\LQA\Desktop\class\HKBU-FIN7830-GP\Resources\Model\scaler.joblib"
 scaler = joblib.load(scaler_path)
 
 # Define softmax function

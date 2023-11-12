@@ -1,6 +1,17 @@
 # HKBU FIN7830 GroupG 2023/11/15
 
- <img src="./Resources/IMG/FrontImg.png" width = "100" height = "100" alt="Front-Image" align=center />
+ <img src="./Resources/IMG/img.png" width = "1792" height = "1024" alt="Front-Image" align=center />
+
+# Project Structure Explain
+```
+├─API (API Relate File)
+├─NotUse (Processing File, Ignore)
+└─Resources
+    ├─Data
+    │  └─WebData
+    ├─IMG
+    └─Model
+```
 
 ## How to start API
 ```
