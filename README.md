@@ -1,35 +1,17 @@
-# HKBU-FIN7830-GP
+# HKBU FIN7830 GroupG 2023/11/15
 
+ <img src="./Resources/IMG/FrontImg.png" width = "100" height = "100" alt="Front-Image" align=center />
 
 ## How to start API
 ```
 uvicorn API:app --host 0.0.0.0 --port 8000 --reload
 ```
-## To Do List
-- [x] 平衡数据集（使用SMOTE算法）
-- [ ] 数据可视化（还需要更多）
-- [ ] ~~数据预处理（例如PCA）~~ (弃用)
-- [ ] 逻辑回归模型（作为Baseline）
-- [ ] 神经网络模型（当前最高准确率90.551%）
-- [ ] 模型部署 (API & Web)
 
 ## Dataset Citation
 ```
 Karanth, M. (2020). Tabular summary of HR analytics dataset. [Data set]. Zenodo. https://doi.org/10.5281/zenodo.4088439
 ```
-## Dataset Load
 
-```python
-# Read Dataset
-import pandas as pd
-
-# Load the dataset
-file_path = 'Resources/Data/HR_Analytics.csv.csv'
-df = pd.read_csv(file_path)
-
-# Show some basic information about the dataset
-df.info(), df.head()
-```
 ## /Resources/Data 文件说明
 原数据集：[HR_Analytics.csv.csv](Resources%2FData%2FHR_Analytics.csv.csv)
 
@@ -76,34 +58,6 @@ df.info(), df.head()
 Wait for result
 
 
-## 实验性写法 (Pytorch，基于原始数据集)
-代码和详细内容见[LogicalRegression-Pytorch-Vis.ipynb](NotUse%2FLogicalRegression-Pytorch-Vis.ipynb)
-### 基本信息
-```
-模型结果：
-Test Loss: 0.4122784435749054
-Test Accuracy: 0.8117408906882592
-Test ROC-AUC: 0.8952131147540984
-Test F1 Score: 0.812121212121212
-
-模型架构和参数：
-LogisticRegressionModel(
-(linear): Linear(in_features=34, out_features=1, bias=True)
-)
-
-权重与偏置：
-权重: [[-0.09553184 -0.2081166  -0.07418099 -0.2123217   0.29514578 -0.30988827
-  -0.01981156  0.04050073  0.05827003 -0.6642269  -0.20088294 -0.0848937
-  -0.64710206 -0.6597117   0.2865685  -0.58003306 -0.19455934  0.23665671
-  -0.04382532  0.259706    0.15341793  0.45419192 -0.08222049 -0.2576029
-  -0.48684818 -0.02765574 -0.8174921  -0.36876386 -0.40666512 -0.45958838
-   0.70300335 -0.4906797   0.46116477 -0.6617272 ]]
-偏置: [-0.0540861]
-```
-![LogicalRegressionPytorchAdam.png](Resources%2FIMG%2FLogicalRegressionPytorchAdam.png))
-
-### 公式
-![avatar](Resources/IMG/LRfunction.png)
 
 # 神经网络
 使用Pytorch构建神经网络
