@@ -1,3 +1,7 @@
+#############################################################################################
+## Note: This program is written in Chinese Before, and translate to English without test. ##
+#############################################################################################
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -50,7 +54,7 @@ else:
 first_page_url = f"https://www.uwants.com/search.php?searchsubmit=true&srchtxt={search_query}&orderby=most_relevant&page=1"
 driver.get(first_page_url)
 random_sleep_time = random.uniform(3, 5)
-print(f"Randomly delay, wating for page to load, delay time：{random_sleep_time}秒")
+print(f"Randomly delay, wating for page to load, delay time：{random_sleep_time}Second")
 time.sleep(random_sleep_time)  # Random Delay, waiting for page to load
 
 # Find the element standard for total page and extract the number
@@ -177,7 +181,7 @@ for url in tqdm(df['URL'], desc="Loop For Single URL"):
 
             try:
                 public_time = row.find_element(By.CSS_SELECTOR, ".postinfo")
-                new_row["Publish Time"] = public_time.text.split('發表於')[-1].strip()
+                new_row["Publish Time"] = public_time.text.split('Publish at:')[-1].strip()
             except:
                 new_row["Publish Time"] = ""
 
@@ -196,11 +200,11 @@ for url in tqdm(df['URL'], desc="Loop For Single URL"):
             try:
                 reference = row.find_elements(By.CSS_SELECTOR, '.quote blockquote')
                 later_process = row.find_element(By.CSS_SELECTOR, 'div[id^="postmessage_"]')
-                new_row["Whether Reference"] = "是"
+                new_row["Whether Reference"] = "Yes"
                 new_row["Reference Content"] = reference[0].text
-                new_row["Main Content"] = later_process.text.replace(new_row["Reference Content"], "").replace("引用:", "").strip()
+                new_row["Main Content"] = later_process.text.replace(new_row["Reference Content"], "").replace("Reference:", "").strip()
             except:
-                new_row["Whether Reference"] = "否"
+                new_row["Whether Reference"] = "No"
                 new_row["Reference Content"] = " "
 
             print(new_row)
