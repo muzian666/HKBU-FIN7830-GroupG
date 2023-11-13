@@ -13,7 +13,7 @@ for encoding in ['utf-8', 'gbk', 'gb18030']:
         continue
 
 # Extracting all comments from the column "主要内容"
-comments = data['主要内容'].tolist()
+comments = data['Main Content'].tolist()
 
 # Create a new Document
 doc = Document()
