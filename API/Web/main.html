@@ -8,15 +8,15 @@
         #predictForm {
           display: flex;
           flex-wrap: wrap;
-          gap: 10px; /* 设置表单项之间的间隙 */
-          margin-bottom: 20px; /* 在表单和按钮之间提供一些空间 */
+          gap: 10px;
+          margin-bottom: 20px;
         }
 
         .form-group {
           display: flex;
           flex-direction: column;
-          flex-basis: calc(50% - 10px); /* 假设你想要每行两个表单项，间隙为10px */
-          min-width: 120px; /* 设置最小宽度，以避免表单项变得太小 */
+          flex-basis: calc(50% - 10px);
+          min-width: 120px;
         }
 
         .form-group label {
@@ -28,7 +28,7 @@
           padding: 5px;
           border: 1px solid #ccc;
           border-radius: 4px;
-          height: 35px; /* 设置输入框和下拉菜单的统一高度 */
+          height: 35px;
         }
 
         #predictButton {
@@ -72,7 +72,6 @@
             color: white;
 
         }
-        /* 响应式布局：在小屏幕上，表单项占满整个宽度 */
         @media (max-width: 600px) {
           .form-group {
             flex-basis: 100%;

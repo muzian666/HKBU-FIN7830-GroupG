@@ -38,7 +38,7 @@ document.getElementById('predictButton').addEventListener('click', function() {
         }
     };
 
-    fetch("https://api.groupg.pass3exceed4.com/predict/", {
+    fetch("https://127.0.0.1:8000/predict/NN/", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -62,27 +62,20 @@ document.getElementById('predictButton').addEventListener('click', function() {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  // 当文档加载完毕后绑定点击事件到随机数按钮
   document.getElementById('randomButton').addEventListener('click', fillRandomNumbers);
 });
 
 function fillRandomNumbers() {
-  // 获取所有的数值输入元素
   var inputs = document.querySelectorAll('#predictForm input[type="number"]');
-
-  // 为每个数值输入元素生成在指定范围内的随机数
   inputs.forEach(input => {
-    let min = parseInt(input.min) || 0; // 如果未定义 min，则默认为 0
-    let max = parseInt(input.max) || 100; // 如果未定义 max，则默认为 100
+    let min = parseInt(input.min) || 0;
+    let max = parseInt(input.max) || 100;
     input.value = Math.floor(Math.random() * (max - min + 1)) + min;
   });
 
-  // 获取所有的下拉菜单元素
   var selects = document.querySelectorAll('#predictForm select');
 
-  // 为每个下拉菜单选择一个随机选项
   selects.forEach(select => {
-    // 生成一个随机索引，注意要减去第一个占位选项
     let randomIndex = Math.floor(Math.random() * (select.options.length - 1)) + 1;
     select.selectedIndex = randomIndex;
   });

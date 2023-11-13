@@ -10,7 +10,7 @@ from typing import Dict
 class InputData(BaseModel):
     features: Dict[str, float]  # Assume each feature is a floating point number
 
-# 创建 FastAPI 实例
+# Create FastAPI
 app = FastAPI()
 
 app.add_middleware(
@@ -36,7 +36,7 @@ def softmax(x):
     e_x = np.exp(x - np.max(x))
     return e_x / e_x.sum(axis=0)
 
-@app.post("/predict/")
+@app.post("/predict/NN/")
 async def generate_prediction(input_data: InputData):
     try:
         # Convert input data to the correct format
