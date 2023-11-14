@@ -57,3 +57,28 @@ async def generate_prediction(input_data: InputData):
         return {"probability_0": prob_class_0, "probability_1": prob_class_1}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/predict/LR/")
+async def generate_lr_prediction(input_data: InputData):
+    try:
+        # 提取特征值
+        features = input_data.features
+        # 计算线性回归公式的结果
+        result = (14.8900 - 0.3333 * features["BusinessTravel"] + 0.0387 * features["DistanceFromHome"]
+                  - 0.2899 * features["Education"] - 0.6012 * features["EnvironmentSatisfaction"]
+                  - 0.4115 * features["Gender"] - 0.8499 * features["JobInvolvement"]
+                  - 0.7004 * features["JobLevel"] + 0.0935 * features["JobRole"]
+                  - 0.5549 * features["JobSatisfaction"] + 0.1118 * features["NumCompaniesWorked"]
+                  + 0.9542 * features["OverTime"] - 0.6318 * features["PerformanceRating"]
+                  - 0.4653 * features["RelationshipSatisfaction"] - 1.0489 * features["StockOptionLevel"]
+                  - 0.0549 * features["TotalWorkingYears"] - 0.3474 * features["TrainingTimesLastYear"]
+                  - 0.6085 * features["WorkLifeBalance"] + 0.1193 * features["YearsAtCompany"]
+                  - 0.1431 * features["YearsInCurrentRole"] + 0.1651 * features["YearsSinceLastPromotion"]
+                  - 0.2030 * features["YearsWithCurrManager"])
+
+        # 将线性回归结果转换为概率
+        probability = 1 / (1 + np.exp(-result))
+
+        return {"probability": probability}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

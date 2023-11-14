@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group G NN Prediction</title>
     <link rel="icon" type="image/png" href="icon.png">
     <style>
@@ -31,7 +32,7 @@
           height: 35px;
         }
 
-        #predictButton {
+        #predictNNButton {
           flex-basis: 100%;
           padding: 10px;
           border: none;
@@ -41,7 +42,21 @@
           cursor: pointer;
         }
 
-        #predictButton:hover {
+        #predictNNButton:hover {
+          background-color: #0056b3;
+        }
+
+        #predictLRButton {
+          flex-basis: 100%;
+          padding: 10px;
+          border: none;
+          background-color: #007bff;
+          color: white;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        #predictLRButton:hover {
           background-color: #0056b3;
         }
 
@@ -300,7 +315,8 @@
         <input type="number" id="YearsWithCurrManager" name="YearsWithCurrManager" required min="0" max="17"><br><br>
     </div>
     <button type="button" id="randomButton">Generate Random Numbers</button>
-    <button type="button" id="predictButton">Predict</button>
+    <button type="button" id="predictNNButton">Predict By Using Neural Network</button>
+    <button type="button" id="predictLRButton">Predict By Using Logistic Regression</button>
 </form>
 
 <div id="result">Prediction results will be shown here.</div>

@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 
-api_url = "http://127.0.0.1:8000/predict/"
+api_url = "http://127.0.0.1:8000/predict/NN/"
 
 df = pd.read_csv(r'Resources/Data/Encoded_Resampled_HR_Analytics.csv')
 df = df.drop('Attrition', axis=1)
